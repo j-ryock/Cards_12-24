@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards 12-24</title>
+    <style>
+        <style>
+  :root {
+    --bg: #012169;
+  }
+
+  body {
+    background: var(--bg);
+    display: grid;
+    place-items: center;
+    height: 100vh;
+  }
+
+  .gallery {
+    display: flex;
+    gap: 1rem;
+    max-width: 80rem;
+  }
+
+  .cardTitle {
+    text-align: center;
+    color: #012169;
+    font-family: Arial;
+  }
+
+  .card {
+  position: relative;
+  left: 0;
+  flex: 0 1 64px;
+  border-radius: 1.2rem;
+height: 20rem;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--bg);
+  transition: all 0.4s ease-in-out; 
+  box-shadow: 0 5px 12px #0000004d;
+}
+
+.card.active {
+  flex: 0 1 256px;
+  font-weight: bold;
+  border-radius: 1rem;
+}
+
+
+  .card img {
+    position: relative;
+    height: 20rem;
+    object-fit: cover;
+  }
+
+  .card:nth-child(1) img {
+    left: -8rem;
+  }
+
+  .card:nth-child(2) img {
+    left: -6rem;
+  }
+
+  .card:nth-child(3) img {
+    left: -14rem;
+  }
+
+  .card:nth-child(4) img {
+    left: -8rem;
+  }
+</style>
+
+    </style>
+    </style>
+
+</head>
+<body>
+    <div class="gallery">
+        <figure id="card01" class="card">
+          <p class="cardTitle">Title 01</p>
+          <img src="https://fastly.picsum.photos/id/28/4928/3264.jpg?hmac=GnYF-RnBUg44PFfU5pcw_Qs0ReOyStdnZ8MtQWJqTfA" alt="img alt1">
+        </figure>
+        
+        <figure id="card02" class="card">
+          <p class="cardTitle">Title 02</p>
+          <img src="https://fastly.picsum.photos/id/24/4855/1803.jpg?hmac=ICVhP1pUXDLXaTkgwDJinSUS59UWalMxf4SOIWb9Ui4" alt="img alt2">
+        </figure>
+        
+        <figure id="card03" class="card">
+          <p class="cardTitle">Title 03</p>
+          <img src="https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68" alt="img alt2">
+        </figure>
+        
+        <figure id="card04" class="card">
+          <p class="cardTitle">Title 04</p>
+          <img src="https://fastly.picsum.photos/id/11/2500/1667.jpg?hmac=xxjFJtAPgshYkysU_aqx2sZir-kIOjNR9vx0te7GycQ" alt="img alt2">
+        </figure>
+      </div>
+      <script>
+        document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('click', function () {
+    // Check if the clicked card already has the 'active' class
+    const isActive = this.classList.contains('active');
+
+    // Remove the 'active' class from all cards
+    document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+
+    // If the clicked card was not active, add the 'active' class
+    if (!isActive) {
+      this.classList.add('active');
+    }
+  });
+});
+      </script>
+</body>
+</html>
