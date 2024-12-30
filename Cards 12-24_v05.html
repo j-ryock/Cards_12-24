@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards with Animated Checkmarks</title>
+    <style>
+        body {
+            display: grid;
+            place-items: center;
+            height: 100vh;
+        }
+
+        .gallery {
+            display: flex;
+            gap: 1rem;
+            max-width: 919px;
+        }
+
+        .cardTitle {
+            text-align: center;
+            color: #012169;
+            font-family: Arial;
+            font-size: 26px;
+            margin: 30px 0 0 0;
+        }
+
+        .card {
+            position: relative;
+            left: 0;
+            flex: 0 1 64px;
+            border-radius: 1.2rem;
+            height: 20rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease-in-out;
+            box-shadow: 0 5px 12px #0000004d;
+        }
+
+        .card.active {
+            flex: 0 1 195px;
+            font-weight: bold;
+            border-radius: 1rem;
+        }
+
+        .clicked::after {
+            content: '✔';
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            color: green;
+            font-size: 1.5rem;
+            font-weight: bold;
+            opacity: 0;
+            transform: scale(0.5); /* Start smaller */
+            animation: fadeInCheckmark 0.4s ease forwards;
+        }
+
+        @keyframes fadeInCheckmark {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) translate(10px, -10px); /* Smaller and offset */
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translate(0, 0); /* Full size at the correct position */
+            }
+        }
+
+        .card img {
+            position: relative;
+            height: 20rem;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="gallery">
+        <div id="card01" class="card">
+            <p class="cardTitle">Title 01</p>
+            <img src="https://fastly.picsum.photos/id/28/4928/3264.jpg?hmac=GnYF-RnBUg44PFfU5pcw_Qs0ReOyStdnZ8MtQWJqTfA" alt="img alt1">
+        </div>
+
+        <div id="card02" class="card">
+            <p class="cardTitle">Title 02</p>
+            <img src="https://fastly.picsum.photos/id/24/4855/1803.jpg?hmac=ICVhP1pUXDLXaTkgwDJinSUS59UWalMxf4SOIWb9Ui4" alt="img alt2">
+        </div>
+
+        <div id="card03" class="card">
+            <p class="cardTitle">Title 03</p>
+            <img src="https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68" alt="img alt3">
+        </div>
+
+        <div id="card04" class="card">
+            <p class="cardTitle">Title 04</p>
+            <img src="https://fastly.picsum.photos/id/11/2500/1667.jpg?hmac=xxjFJtAPgshYkysU_aqx2sZir-kIOjNR9vx0te7GycQ" alt="img alt4">
+        </div>
+
+        <div id="card05" class="card">
+            <p class="cardTitle">Title 05</p>
+            <img src="https://fastly.picsum.photos/id/28/4928/3264.jpg?hmac=GnYF-RnBUg44PFfU5pcw_Qs0ReOyStdnZ8MtQWJqTfA" alt="img alt5">
+        </div>
+
+        <div id="card06" class="card">
+            <p class="cardTitle">Title 06</p>
+            <img src="https://fastly.picsum.photos/id/24/4855/1803.jpg?hmac=ICVhP1pUXDLXaTkgwDJinSUS59UWalMxf4SOIWb9Ui4" alt="img alt6">
+        </div>
+
+        <div id="card07" class="card">
+            <p class="cardTitle">Title 07</p>
+            <img src="https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68" alt="img alt7">
+        </div>
+
+        <div id="card08" class="card">
+            <p class="cardTitle">Title 08</p>
+            <img src="https://fastly.picsum.photos/id/11/2500/1667.jpg?hmac=xxjFJtAPgshYkysU_aqx2sZir-kIOjNR9vx0te7GycQ" alt="img alt8">
+        </div>
+
+        <div id="card09" class="card">
+            <p class="cardTitle">Title 09</p>
+            <img src="https://fastly.picsum.photos/id/28/4928/3264.jpg?hmac=GnYF-RnBUg44PFfU5pcw_Qs0ReOyStdnZ8MtQWJqTfA" alt="img alt9">
+        </div>
+
+        <div id="card10" class="card">
+            <p class="cardTitle">Title 10</p>
+            <img src="https://fastly.picsum.photos/id/24/4855/1803.jpg?hmac=ICVhP1pUXDLXaTkgwDJinSUS59UWalMxf4SOIWb9Ui4" alt="img alt10">
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', function () {
+                // Check if the clicked card already has the 'active' class
+                const isActive = this.classList.contains('active');
+
+                // Remove the 'active' class from all cards
+                document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+
+                // If the clicked card was not active, add the 'active' and 'clicked' classes
+                if (!isActive) {
+                    this.classList.add('active', 'clicked');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
